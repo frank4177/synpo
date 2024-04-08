@@ -14,10 +14,13 @@ const DashboardNavbar = () => {
       <div className="flex flex-row items-center justify-between h-[inherit] center-component gap-5">
         <div className="flex flex-row items-center gap-5 max-w-[800px] w-full">
         <Logo/>
+        <div className="search-mq w-full">
         {matches ? null : <SearchBar/>}
+
+        </div>
         </div>
        
-        <div className={` ${matches ? "hidden" : "flex flex-row items-center gap-2"}`}>
+        <div className={`flex flex-row items-center gap-2 avatar-mq`}>
           <p className="font-[500] text-[16px]">Welcome!</p>
           <Image
             src="/images/photo.svg"

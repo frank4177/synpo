@@ -6,7 +6,7 @@ import React from 'react'
 const Logo = () => {
   return (
     <Link href={homePathname}>
-        <Image src="/images/logo.svg" height={30} width={93} alt="logo" />
+        <Image src="/images/logo.svg" height={30} width={97} alt="logo" />
     </Link>
   )
 }

@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/services/redux/store";
 
 const DashboardScreen = () => {
-  const {reviewsData, refetch, loading } = useFetchReviews();
+  const { reviewsData, refetch, loading } = useFetchReviews();
   const reviewsState = useSelector(
     (state: RootState) => state?.reviewData?.reviews
   );
 
-  console.log(loading)
+  const lengthcheck = reviewsState && reviewsState?.length > 0;
 
   // useEffect(() => {
   //   refetch();
@@ -26,24 +26,31 @@ const DashboardScreen = () => {
   return (
     <div className="pb-10">
       <ReviewDataSection />
-      {reviewsState.length === 0  && reviewsState !== undefined ? (
+      {reviewsState?.length === 0 ? (
         <div className="mt-5">
           <NoReviews />
         </div>
       ) : (
-        <>
-          <div className="center-component flex flex-row  justify-between gap-5 reviews-grid-mq">
-            <div className="flex flex-col max-w-[700px] w-full">
-              {reviewsState?.map((item) => (
-                <Reviews data={item} key={item.id} />
-              ))}
-              
-              {/* <div className="m-auto">{loading && <Spinner />}</div> */}
-            </div>
+        lengthcheck && (
+          <>
+            <div className="center-component flex flex-row justify-between gap-5 reviews-grid-mq">
+              <div className="flex flex-col max-w-[700px] w-full">
+                {reviewsState?.map((item) => (
+                  <Reviews data={item} key={item.id} />
+                ))}
 
-            <PhotoGrid />
-          </div>
-        </>
+                {/* <div className="m-auto">{loading && <Spinner />}</div> */}
+              </div>
+
+              <PhotoGrid />
+            </div>
+          </>
+        )
+      )}
+      {loading && (
+        <div className="flex flex-row mt-10 items-center justify-center">
+          <Spinner />
+        </div>
       )}
     </div>
   );

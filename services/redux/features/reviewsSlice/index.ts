@@ -4,11 +4,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 export interface reduxReviewDataType {
-  reviews: ReviewDataTypes[]
+  reviews: ReviewDataTypes[] | null
  }
 
 const initialState: reduxReviewDataType = {
-  reviews: []
+  reviews: null
 };
 
 const reviewsSlice = createSlice({

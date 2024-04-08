@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 export const useFetchReviews = () =>{
     const dispatch = useDispatch();
     const [loading, setLoading] = useState<boolean>(false);
-    const [reviewsData, setReviewsData] = useState<ReviewDataTypes[]>([]);
+    const [reviewsData, setReviewsData] = useState<ReviewDataTypes[] | null>(null);
     const fetchReviews = async () => {
       setLoading(true);
       try {

@@ -1,7 +1,7 @@
 "use client";
 import HomeNavbar from "@/components/Navbar/HomeNavbar";
 import GuestContainer from "@/containers/GuestContainer";
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import SearchBar from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
@@ -13,20 +13,24 @@ import { dashboardPathname } from "@/constants/pathname";
 const HomeScreen = () => {
   const navigate = useRouter();
 
+
+
   const search = () => {
     navigate.push(dashboardPathname);
   };
+
+
   return (
     <>
     <HomeNavbar />
       <div className="flex flex-row justify-between h-[90vh] center-component ">
-        <div className="space-y-5 flex flex-col w-fit self-center home-text-container-mq">
-          <h3 className="font-[700] text-[60px]  lg:text-[64px] leading-[77px] home-main-text">
+        <div className="space-y-5 flex flex-col w-[510px]  self-center home-text-container-mq">
+          <h3 className="font-[700] text-[60px] w-full lg:text-[64px] leading-[77px] home-main-text">
             Find a place you
             <br />
             will love to live!
           </h3>
-          <p className="text-[18px] lg:text-[24px] home-sub-text">
+          <p className="text-[18px] w-full lg:text-[24px] home-sub-text">
             See through the lenses of people who have
             <br /> lived or visited the neighbourhood you might
             <br /> have in mind.
@@ -45,13 +49,13 @@ const HomeScreen = () => {
 
      
 
-        <div className="reviews-home-mq">
+        <div className="reviews-home-mq flex flex-row justify-end w-fit">
           <Image
             src="/images/reviews-pico2.svg"
-            width={530}
+            width={475}
             height={100}
             alt="reviews"
-            className="h-full w-full"
+            className="h-full"
           />
         </div>
       </div>

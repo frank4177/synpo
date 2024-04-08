@@ -24,11 +24,10 @@ const Snackbar = () => {
     }
   }, [snackbarState?.message, dispatch,snackbarState.duration]);
 
-
-
   if (snackbarState.message === undefined) return <></>;
   return (
-    <div className=" fixed z- top-[100px] left-[40%]  bg-[#F2FDF2] max-w-[339px] w-full h-[50px] border-[1px] border-[#0F920F] rounded-sm flex flex-row items-center justify-center gap-1">
+    <div className=" fixed  top-[100px]   w-full h-[50px]   flex flex-row items-center justify-center ">
+      <div className="border-[1px] bg-[#F2FDF2] border-[#0F920F] h-full max-w-[339px] w-full rounded-sm flex flex-row items-center justify-center gap-1">
       <Image
         src="/icons/check-circle.svg"
         height={16}
@@ -38,6 +37,8 @@ const Snackbar = () => {
       <span className="text-[14px] text-[#0F920F] font-[500]">
         {snackbarState?.message}
       </span>
+      </div>
+      
     </div>
   );
 };

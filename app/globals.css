@@ -291,6 +291,14 @@ box-shadow: inset 0px 63px 37px -8px rgba(242,56,242,1);
     display: none;
   }
 
+  .search-mq{
+    display: none;
+  }
+
+  .avatar-mq{
+    display: none;
+  }
+
   .reviews-grid-mq{
     flex-direction: column;
     flex-flow: column-reverse;

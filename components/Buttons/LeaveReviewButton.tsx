@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { reviewsRef } from "@/config/firebaseConfig";
 import { addDoc, getDoc } from "firebase/firestore";
 import { Textarea } from "@/components/ui/textarea";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { StarIcon } from "lucide-react";
 import Spinner from "@/components/Loaders/Spinner";
 import { showToast } from "@/services/redux/features/commonSlice";
@@ -24,9 +24,10 @@ import { useFetchReviews } from "@/services/requests";
 
 interface ILeaveReviewButtonProps {
   refetch?: () => Promise<void>;
+  setCloseSheet?: Dispatch<SetStateAction<boolean | undefined>>
 }
 
-export function LeaveReviewButton({ }: ILeaveReviewButtonProps) {
+export function LeaveReviewButton({ setCloseSheet}: ILeaveReviewButtonProps) {
   const { refetch} = useFetchReviews();
   const dispatch = useDispatch();
   const [modal, setModal] = useState<boolean | undefined>(undefined);
@@ -54,7 +55,7 @@ export function LeaveReviewButton({ }: ILeaveReviewButtonProps) {
       setLoading(false);
       refetch?.()
       dispatch(showToast({message:"Review submitted"}))
-
+    setCloseSheet?.(false)
     setReview("")
     setRating(0)
     setSelectedRows([])
@@ -78,7 +79,7 @@ export function LeaveReviewButton({ }: ILeaveReviewButtonProps) {
           <Button className=" h-[46px] max-w-[210px] w-full">LEAVE A REVIEW</Button>
         </DialogTrigger>
         <div className="px-5">
-          <DialogContent className="max-w-[695px]">
+          <DialogContent className="max-w-[695px]  ">
             <DialogHeader>
               <DialogTitle className="text-center">Review Location</DialogTitle>
               <p className="text-[20px] font-[500]">

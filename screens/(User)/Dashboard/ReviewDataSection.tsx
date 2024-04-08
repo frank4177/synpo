@@ -44,7 +44,7 @@ const ReviewDataSection = () => {
             </p>
           </div>
 
-          {reviewsState.length !== 0 && (
+          {reviewsState?.length !== 0 && (
             <div className="flex flex-row items-center gap-4">
               <LeaveReviewButton />
               <div className="border-[1px]  h-[45px] w-[56px] rounded-md border-[#3366FF] flex flex-col items-center justify-center cursor-pointer">

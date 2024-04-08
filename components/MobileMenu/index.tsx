@@ -16,12 +16,13 @@ import Logo from "../Logo";
 import SearchBar from "../SearchBar";
 import Image from "next/image";
 import { LeaveReviewButton } from "../Buttons/LeaveReviewButton";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { queries } from "@/constants";
 import { useSelector } from "react-redux";
 import { RootState } from "@/services/redux/store";
 
 export function MobileMenu() {
+  const [closeSheet, setCloseSheet] = useState<boolean | undefined>(undefined);
   const scrollContainerRef = useRef<any>(null);
   const reviewsState = useSelector(
     (state: RootState) => state?.reviewData?.reviews
@@ -35,13 +36,13 @@ export function MobileMenu() {
     }
   };
   return (
-    <Sheet>
-      <SheetTrigger asChild>
+    <Sheet open={closeSheet}>
+      <SheetTrigger asChild onClick={() => setCloseSheet(undefined)}>
         <Button variant="outline">
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent className="px-3">
+      <SheetContent className="px-3" onOpenAutoFocus={(e) => e.preventDefault()}>
         <div className="space-y-7">
           <div className="flex flex-row items-center justify-between mt-8 gap-5 max-w-[800px] w-full">
             <Logo />
@@ -90,10 +91,10 @@ export function MobileMenu() {
                 <ChevronRight />
               </div>
             </div>
-            {reviewsState.length !== 0 && (
+            {reviewsState?.length !== 0 && (
               <div className="flex flex-col gap-4 flex-wrap">
                 <div className="flex flex-row justify-end w-full">
-                <LeaveReviewButton />
+                <LeaveReviewButton setCloseSheet={setCloseSheet}/>
 
                 </div>
                 <div className="flex flex-row items-center justify-end gap-2">
