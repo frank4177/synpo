@@ -233,12 +233,39 @@ box-shadow: inset 0px 63px 37px -8px rgba(242,56,242,1);
     flex-direction: column;
     flex-flow: column-reverse;
   }
+
+  .home-text-container-mq{
+    margin: auto;
+  }
 }
 
 @media (max-width:714px){
   .amenities-col{
     display: grid;
   grid-template-columns: 1fr 1fr 1fr ;
+  }
+}
+
+@media (max-width:714px){
+  .amenities-col{
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  }
+}
+
+@media (max-width:520px){
+  .amenities-col{
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  }
+
+  .home-main-text{
+    font-size: 35px;
+    line-height:50px;
+  }
+
+  .home-sub-text{
+    font-size: 16px;
   }
 }
 
