@@ -237,6 +237,10 @@ box-shadow: inset 0px 63px 37px -8px rgba(242,56,242,1);
   .home-text-container-mq{
     margin: auto;
   }
+
+  .photogrid-mq{
+    margin: auto;
+  }
 }
 
 @media (max-width:714px){
