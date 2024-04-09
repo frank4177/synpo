@@ -10,13 +10,15 @@ import { queries } from "@/constants";
 import { ChevronDown } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
 
-interface ISelectAmenitiesProps{
-    selectedRows: string[]
-    setSelectedRows: Dispatch<SetStateAction<string[]>>
+interface ISelectAmenitiesProps {
+  selectedRows: string[];
+  setSelectedRows: Dispatch<SetStateAction<string[]>>;
 }
 
-export function SelectAmenities({setSelectedRows, selectedRows}: ISelectAmenitiesProps) {
-
+export function SelectAmenities({
+  setSelectedRows,
+  selectedRows,
+}: ISelectAmenitiesProps) {
   const toggleRow = (id: string) => {
     const isSelected = selectedRows.includes(id);
     let newSelectedRows: string[];
@@ -32,9 +34,27 @@ export function SelectAmenities({setSelectedRows, selectedRows}: ISelectAmenitie
 
   return (
     <Popover>
-      <PopoverTrigger asChild className=" flex flex-row justify-between bg-[#F3F7FE] h-[50px]">
-        <Button variant="outline" className=" text-start">
-          Select Amenities <ChevronDown/>
+      <PopoverTrigger
+        asChild
+        className=" flex flex-row justify-between bg-[#F3F7FE] h-[50px]"
+      >
+        <Button variant="outline" className=" text-start ">
+          Select Amenities
+          {/* {selectedRows?.length === 0 ? (
+            "Select Amenities"
+          ) : (
+            <div className="flex  items-center flex-row max-w-[550px] gap-2 overflow-x-auto scoo2">
+              {selectedRows.map((item) => (
+                <div
+                  className="px-2  border-[1px] text-[14px] border-gray-200 rounded-md bg-white whitespace-nowrap"
+                  key={item}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )} */}
+          <ChevronDown />
         </Button>
       </PopoverTrigger>
 
@@ -57,7 +77,6 @@ export function SelectAmenities({setSelectedRows, selectedRows}: ISelectAmenitie
           ))}
         </div>
       </PopoverContent>
-
     </Popover>
   );
 }

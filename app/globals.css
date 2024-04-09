@@ -162,6 +162,17 @@ button {
   scrollbar-width: none;
 }
 
+/* .scoo2{
+  overflow-x: scroll;
+
+  scrollbar-width: thin;
+} */
+
+.scoo2 ::-webkit-scrollbar{
+
+  width: 5px;
+}
+
 
 
 .loader {

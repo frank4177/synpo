@@ -10,6 +10,7 @@ import Spinner from "@/components/Loaders/Spinner";
 import NoReviews from "@/components/NoResult/NoReviewResult";
 import { useSelector } from "react-redux";
 import { RootState } from "@/services/redux/store";
+import RefetchData from "@/components/NoResult/refetchData";
 
 const DashboardScreen = () => {
   const { reviewsData, refetch, loading } = useFetchReviews();
@@ -19,17 +20,17 @@ const DashboardScreen = () => {
 
   const lengthcheck = reviewsState && reviewsState?.length > 0;
 
-  // useEffect(() => {
-  //   refetch();
-  // }, []);
+
 
   return (
     <div className="pb-10">
       <ReviewDataSection />
       {reviewsState?.length === 0 ? (
-        <div className="mt-5">
-          <NoReviews />
-        </div>
+        <>
+        {!loading && <div className="mt-5">
+          <RefetchData refetch={refetch} />
+        </div>}
+        </>
       ) : (
         lengthcheck && (
           <>
@@ -39,7 +40,6 @@ const DashboardScreen = () => {
                   <Reviews data={item} key={item.id} />
                 ))}
 
-                {/* <div className="m-auto">{loading && <Spinner />}</div> */}
               </div>
 
               <PhotoGrid />
