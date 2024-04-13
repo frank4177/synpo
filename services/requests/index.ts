@@ -12,13 +12,13 @@ export const useFetchReviews = () =>{
     const fetchReviews = async () => {
       setLoading(true);
       try {
-        const querySnapshot = await getDocs(query(collection(db, "reviews"), orderBy("time", "desc")));
+        const querySnapshot = await getDocs(query(collection(db, "reviews"), orderBy("timeStamp", "desc")));
         let data: any = [];
         querySnapshot.forEach((doc) => {
           const dat = doc.data();
           data.push(dat);
         });
-        console.log(data);
+       
         dispatch(reviews(data));
         setReviewsData(data);
         setLoading(false);

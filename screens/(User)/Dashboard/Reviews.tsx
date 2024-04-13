@@ -9,7 +9,10 @@ interface IReviewsProps {
 data: ReviewDataTypes
 }
 
+
 const Reviews = ({data}:IReviewsProps) => {
+
+
   return (
     <>
       <div className="max-w-[700px] border-b-[1px] h-fit p-4 space-y-4 pb-3">

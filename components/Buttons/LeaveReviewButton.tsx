@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { reviewsRef } from "@/config/firebaseConfig";
-import { addDoc, getDoc } from "firebase/firestore";
+import { Timestamp, addDoc, getDoc } from "firebase/firestore";
 import { Textarea } from "@/components/ui/textarea";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { StarIcon } from "lucide-react";
@@ -38,7 +38,7 @@ export function LeaveReviewButton({ setCloseSheet}: ILeaveReviewButtonProps) {
   const [rating, setRating] = useState(0);
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const count = "";
-  const currentTimestamp = Date().toString();
+  const currentTime = Date().toString();
 
 
   const handleSubmitReview = async () => {
@@ -50,7 +50,8 @@ export function LeaveReviewButton({ setCloseSheet}: ILeaveReviewButtonProps) {
         rating: rating,
         review: review,
         anonymous: anonymous,
-        time: currentTimestamp,
+        time: currentTime,
+        timeStamp: Timestamp.now()
       });
       setLoading(false);
       refetch?.()
